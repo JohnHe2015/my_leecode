@@ -33,3 +33,16 @@ search 中的 word 由 '.' 或小写英文字母组成
 最多调用 104 次 addWord 和 search
 */
 package main
+
+type Dict struct {
+	len int
+	arr []string
+}
+
+func addWord(dict Dict) {
+
+}
+
+func main() {
+
+}

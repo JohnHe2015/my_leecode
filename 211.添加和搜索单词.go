@@ -39,7 +39,7 @@ type Dict struct {
 	arr []string
 }
 
-func addWord(dict Dict) {
+func (dict Dict) addWord() {
 
 }
 

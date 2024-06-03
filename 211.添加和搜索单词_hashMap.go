@@ -32,17 +32,54 @@ addWord 中的 word 由小写英文字母组成
 search 中的 word 由 '.' 或小写英文字母组成
 最多调用 104 次 addWord 和 search
 */
+
+// hashMap
 package main
 
-type Dict struct {
-	len int
-	arr []string
+import "fmt"
+
+type WordDictionary struct {
+	//define key是长度、value是字符串数组
+	words map[int][]string
 }
 
-func (dict Dict) addWord() {
+func Constructor() WordDictionary {
+	return WordDictionary{words: make(map[int][]string)}
+}
 
+func (dict *WordDictionary) addWord(word string) {
+	wordLen := len(word)
+	dict.words[wordLen] = append(dict.words[wordLen], word)
+}
+
+func (dict *WordDictionary) searchWord(word string) bool {
+	wordLen := len(word)
+	if words, ok := dict.words[wordLen]; ok {
+		for _, w := range words {
+			if match(w, word) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func match(word, pattern string) bool {
+	if len(word) != len(pattern) {
+		return false
+	}
+	for i := 0; i < len(word); i++ {
+		if pattern[i] != '.' && pattern[i] != word[i] {
+			return false
+		}
+	}
+	return true
 }
 
 func main() {
-
+	wordDict := Constructor()
+	wordDict.addWord("hello")
+	wordDict.addWord("nice")
+	fmt.Println(wordDict.searchWord("hello"))
+	fmt.Println(wordDict.searchWord("nice."))
 }

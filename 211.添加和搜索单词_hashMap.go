@@ -43,10 +43,6 @@ type WordDictionary struct {
 	words map[int][]string
 }
 
-func Constructor() WordDictionary {
-	return WordDictionary{words: make(map[int][]string)}
-}
-
 func (dict *WordDictionary) addWord(word string) {
 	wordLen := len(word)
 	dict.words[wordLen] = append(dict.words[wordLen], word)
@@ -77,7 +73,7 @@ func match(word, pattern string) bool {
 }
 
 func main() {
-	wordDict := Constructor()
+	wordDict := WordDictionary{words: make(map[int][]string)}
 	wordDict.addWord("hello")
 	wordDict.addWord("nice")
 	fmt.Println(wordDict.searchWord("hello"))

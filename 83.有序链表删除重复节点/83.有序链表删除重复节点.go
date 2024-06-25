@@ -1,6 +1,5 @@
 package main
 
-//TODO
 import "fmt"
 
 type NodeList struct {
@@ -30,13 +29,12 @@ func printNodeList(n *NodeList) {
 
 func deleteDuplicateElement(n *NodeList) *NodeList {
 	cur := n
-	for n != nil {
+	for cur != nil && cur.Next != nil {
 		if cur.Val == cur.Next.Val {
 			cur.Next = cur.Next.Next
 		} else {
 			cur = cur.Next
 		}
-
 	}
 	return n
 }
